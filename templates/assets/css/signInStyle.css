@@ -1,0 +1,17 @@
+body {
+  background-color: #98EE99;
+  opacity: 0.7;
+}
+
+.moveForm {
+  -webkit-transform: translateX(60%);
+          transform: translateX(60%);
+}
+
+@media only screen and (max-width: 816px) {
+  .moveForm {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+/*# sourceMappingURL=signInStyle.css.map */

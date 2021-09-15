@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Afcon camair</title>
+    <!-- MDB icon -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <!-- Start your project here-->
+    <header>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- header -->
+           <nav class="navbar navbar-light nav-bg text-white">
+             <div class="col-8 col-md-5 justify-content-center text-center text-md-start">
+               <a href="#">
+                 <img src="{% static 'img/afcon_logo.png' %}" alt="logo" srcset="" class="d-none d-md-block">
+                 <h5 class="logotext  text-center text-md-start mt-2">Afcon 2022</h5>
+               </a>
+             </div>
+             <div class=" d-flex justify-content-evenly align-items-center text-md-center" >
+              <form method="POST" action=" {% url 'matchsearchpage' %}  " class="text-white">
+                <div class="input-group text-white">
+                <div class="form-outline text-white">
+                    {% csrf_token%}
+                    <input type="search" name="searched_word" id="form1" class="form-control text-white" required  />
+                    <label class="form-label" for="form1">Search</label>
+                </div>
+                <button type="submit" class="btn " style="background-color: #fff">
+                    <i class=" fas fa-search"></i>
+                </button>
+            </div>
+            </form>
+             </div>
+                <div class="col-2 ms-auto text-center " style="color: aliceblue;" >
+                  <span href="" style="color:aliceblue ;" data-toggle="modal" data-target="#modalLoginAvatarDemo">
+                    <i class=" user fas fa-user-circle fa-2x"></i>
+                  </span>
+                </div>
+           </nav>
+           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <!-- <a href="#" data-target="#sidebar" data-toggle="collapse" aria-expanded="false" id="toggler"><i class="fa fa-bars py-2 p-1" style="color: #338A3E;"></i></a>-->
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <i class="fas fa-bars"></i>
+              </button> 
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'matchespage' %}">Matches</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'staduimspage' %}">Staduims</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'salespage' %}">Sales</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <section>
+                    <div class="btn-group me-2 button-group" role="group" aria-label="Second group">
+                      <a class="btn btn-primary " style="background-color: #3b5998" href="#!" role="button"
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                       <a class="btn btn-primary" style="background-color: #55acee" href="#!" role="button"
+                          ><i class="fab fa-twitter"></i
+                        ></a>
+                        <a class="btn btn-primary" style="background-color: #25d366" href="#!" role="button"
+                        ><i class="fab fa-whatsapp"></i
+                      ></a>
+                    </div>
+          </section>
+          </nav>
+           <!-- end of header -->
+        </div>
+      </div>
+    </header>
+    <div class="wrapper d-flex ">
+      <div class="sidemenu  no-wrap card p-3 shadow-lg w-50 mt-3  collapse width show-md"id="sidebar">
+        <div class="sidebar p-1  " >
+          <ul class="navbar-nav no-wrap">
+            <li class="nav-item">
+              <a href="" class="nav-link" hreff="#">
+                 <i class="fas fa-angle-double-right ml-5"></i>
+                <span class="text">
+                   WEB DEVELOPEMENT
+                </span>
+               
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link" hreff="#">
+                
+                 <i class="fas fa-angle-double-right ml-5"></i>
+                <span class="text">OPERATING SYSTEMS</span>
+                
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link" hreff="#">
+                
+                 <i class="fas fa-angle-double-right ml-5"></i>
+                <span class="text"> ELECTRICITY</span>
+                
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link" hreff="#">
+            
+                <i class="fas fa-angle-double-right ml-5"></i>
+                <span class="text"> PROGRAMMING/DATABASE</span>
+                
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link" hreff="#">
+                 <i class="fas fa-angle-double-right ml-5"></i>
+                  <span class="text">EMPOWERMENT</span>
+                
+              </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link" hreff="#">
+                  <i class="fas fa-angle-double-right ml-5"></i>
+                  <span class="text">EDUCATION</span>
+                  
+                </a>
+                </li>
+                <li class="nav-item">
+                  <a href="" class="nav-link" hreff="#">
+                     <i class="fas fa-angle-double-right ml-5"></i>
+                    <span class="text">LOGICAL REASONING</span>
+                   
+                  </a>
+                  </li>
+          </ul>
+        </div>
+      </div>
+      {% block content %}
+      <marquee><h3>Congratulation your ticket has been bought successfully Check your email for an  E-copy</h3> </marquee>
+      {% endblock%}
+    </div>
+    <footer class=" text-center text-lg-start mt-5 pt-md-5">
+      <!-- Grid container -->
+      
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="text-center text-light p-3" style="background-color: #338A3E">
+        © 2021 Copyright:
+        <a class="text-light" href="https://TakwidGroup.com">TakwidGroup</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+    <!-- <script src="{% static 'js/main.js' %}"></script> -->
+    {% block script %}
+    {% endblock %}
+  </body>
+</html>

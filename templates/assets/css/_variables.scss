@@ -1,0 +1,13 @@
+@function rem($value){
+    @return unquote(($value/1px/16) +"rem")
+}
+
+
+
+$primaryColor:#66BB6A;
+$primaryColorLight:#98EE99;
+$primaryColorDark:#338A3E;
+$primaryTextlight:#000;
+$primarytextDark:#fff;
+$easeTime:0.2s;
+$margin-top:rem(150px);

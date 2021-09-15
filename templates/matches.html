@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load thumbnail %}
+<main>
+    <div class="container-fluid ">
+      <div class="row d-md-flex  justify-content-center">
+       
+          <h4 class="text-center m-4"> All Matches </h4>
+      
+        {% for match in matches %}
+         <div class="col-md-4 mt-3 mt-md-3 d-md-flex justify-content-center ">
+          <div class="card text-center " style="background-color:#ffffff;">
+            <div class="card-header">
+              <a href="{% url 'buy' match.id %}">
+                <h1 class="text-success">{{match}}</h1>
+                <h4>{{match.match_round}}</h4>
+            </div>
+
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <div class="row">
+            
+              <div class="col-4 p-3">
+
+                {% thumbnail match.home_team.team_flag "200x50" as im %}
+              <img src="{{ im.url }}">
+              {% endthumbnail %}
+              
+              </div>
+              <div class="col-4 p-3">
+                <h1>VS</h1>
+              </div>
+              <div class="col-4 p-3">
+                 {% thumbnail match.away_team.team_flag "200x50" as im %}
+              <img src="{{ im.url }}">
+              {% endthumbnail %}
+              </div>
+            </div>
+              
+
+              
+              
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+             
+            </div>
+            
+            <div class="card-body text-dark">
+              <h5 class="card-title"><h3>Staduim: {{match.match_staduim}} </h3></h5>
+              <p class="card-text">
+                Buy Ticket by clicking on the match {{match.name}}
+                
+              </p>
+          
+          
+            </div>
+            <div class="card-footer"><h4 class="text-success">{{match.match_time}}</h4></div>
+             </a>
+          </a>
+          </div>
+        </div>
+        {% endfor%}
+      </div>
+      <div class="pagination">
+        <span class="step-links">
+            {% if matches.has_previous %}
+            <a href="?page=1" class="text-success">&laquo; first</a>
+            <a href="?page={{ matches.previous_page_number }}" class="text-success">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ matches.number }} of {{ matches.paginator.num_pages }}.
+            </span>
+            {% if matches.has_next %}
+            <a href="?page={{ matches.next_page_number }}" class="text-success">next</a>
+            <a href="?page={{ matches.paginator.num_pages }}" class="text-success">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+      {% endblock%}
+      

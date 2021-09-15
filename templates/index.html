@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load thumbnail %}
+<div class="content mt-3 ml-5 w-100 ">
+ 
+  <main>
+    <div class="container-fluid ">
+      <div class="row d-md-flex  justify-content-center">
+       
+          <h4 class="text-center m-4">Welcom, See Top 3 Upcoming Matches Below</h4>
+          {% for message in messages %}
+            <h2 class="text-center text-success">{{message}} </h2>
+          {% endfor %}
+          
+      
+        {% for match in upcoming_matches %}
+         <div class="col-md-4 mt-3 mt-md-0 d-md-flex justify-content-center ">
+          <div class="card text-center " style="background-color:#ffffff;">
+            <a href="{% url 'buy' match.id %}">
+            <div class="card-header"><h1 class="text-success">{{match}}</h1></div>
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+               <div class="row">
+            
+              <div class="col-4 p-3">
+
+                {% thumbnail match.home_team.team_flag "200x50" as im %}
+              <img src="{{ im.url }}">
+              {% endthumbnail %}
+              
+              </div>
+              <div class="col-4 p-3">
+                <h1>VS</h1>
+              </div>
+              <div class="col-4 p-3">
+                 {% thumbnail match.away_team.team_flag "200x50" as im %}
+              <img src="{{ im.url }}">
+              {% endthumbnail %}
+              </div>
+            </div>
+              
+              
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+             
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><h3>Staduim: {{match.match_staduim}} </h3></h5>
+              <p class="card-text">
+                Buy ticket by clicking on the match  
+                
+              </p>
+          
+          
+            </div>
+            <div class="card-footer"><h4 class="text-success">{{match.match_time}}</h4></div>
+             </a>
+          </div>
+        </div>
+        {% endfor%}
+      </div>
+      
+    <div class="modal fade" id="modalLoginAvatarDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+              <!--Content-->
+              <div class="modal-content">
+
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center">
+                  <img src="img/logo.png" class="rounded-circle img-responsive "
+                    alt="Avatar photo" style="width: 200px; height: 200px;">
+                </div>
+                <!--Body-->
+                <div class="modal-body text-center mb-1">
+
+                  <div class="form-outline md-outline mb-4">
+                    <input type="email" id="form5Example2" class=" form-control " />
+                    <label class="form-label" for="emailadress">Email address</label>
+                  </div>
+                  <br>
+
+                  <div class="form-outline ml-0 mr-0">
+                    
+                    <input type="password" type="text" id="form1" class="form-control ml-0">
+                    <label class="form-label" for="emailadress">password</label>
+                  </div>
+
+                  <div class="text-center mt-4">
+                    <button class="btn btn-cyan">Login
+                      <i class="fa fa-sign-in ml-1"></i>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+              <!--/.Content-->
+            </div>
+          </div>
+  </main>
+</div>
+{% endblock %}

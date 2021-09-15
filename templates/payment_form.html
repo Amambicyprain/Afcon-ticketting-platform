@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+<style type="text/css">
+    .form-select:focus{
+        box-shadow: inset 0 0px 0px , 0 0 0px green;
+    }
+
+</style>
+
+
+<div class="container-fluid">
+    <div class="row justify-content-end mt-5">
+        {% for message in messages %}
+            <h2 class="text-center text-success">{{message}}, you can buy another ticket </h2>
+        {% endfor %}
+        <div class="col-xl-8 col-md-8 mx-auto mt-3">
+            <form class="bg-white rounded shadow-5-strong p-5" method="POST" action="{% url 'buy' match_id %}" onsubmit="check_number(event)">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row mb-4">
+                      <h3 class="text-danger text-center" id="bill"></h3>
+                        {% csrf_token %}                           
+                         
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form3Example1" class="form-control" name="f_name" required="required" />
+                            <label class="form-label" for="form3Example1">First name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form3Example2" class="form-control" name="l_name" required="required" />
+                            <label class="form-label" for="form3Example2">Last name</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Email input -->
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-outline">
+                            <input type="text" id="form3Example1" class="form-control" name="email" required="required" />
+                            <label class="form-label" for="form3Example1">Email</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <select class="form-select " name="ticket_category" aria-label="Default select example " id="ticket_class" onchange="generateBill()" required="required" >
+                        <option selected value="">Select Ticket category </option>
+                          <option  value="First_class">First class</option>
+                           <option value="Middle_class">Second class</option>
+                            <option value="VIP">VIP</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="">
+                            <label for="exampleFormControlInput1" class="form-label"><pre>  Phone number for payment</pre></label>
+                            <input type="number"  class="form-control" required="required" id="phone_number" placeholder="" name="phone_number">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="">
+                             <label for="exampleFormControlInput1" class="form-label"><pre>  id card number</pre></label>
+                            <input type="number"  class="form-control" id="numberVotes" required="required" placeholder="" name="id">
+                        </div>
+                    </div>
+                     <div class="col" hidden>
+                        <div class="form-outline">
+                             <label for="exampleFormControlInput1" class="form-label"><pre>  match id</pre></label>
+                            <input type="number"  class="form-control" id="numberVotes" placeholder="" name="match_id" value="{{match.id}}">
+                        </div>
+                    </div>
+                    <div class="col" hidden>
+                        <div class="form-outline">
+                             <label for="exampleFormControlInput1" class="form-label"><pre> ticket cost</pre></label>
+                            <input type="number"  class="form-control" id="ticket_cost" placeholder="" name="ticket_cost" value="">
+                        </div>
+                    </div>
+                </div>
+                <!-- Checkbox -->
+                <div class="form-check mb-4">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="buy_more"
+                    id="flexRadioDefault1"
+                    value = 'yes'
+                  />
+                    <label class="form-check-label" for="flexRadioDefault1"> Buy more than one Ticket for this match </label>
+                </div>
+                
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-success btn-block mb-4" onclick="" >BUY TICKET</button>
+                <!-- Register buttons -->
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock%}
+{% block mail %}{% endblock %}
+{%block script%}
+<script type="text/javascript">
+    function generateBill() {
+        var cost = 0;
+        var ticket_class = document.getElementById('ticket_class');
+        var bill = document.getElementById('bill')
+        var ticket_cost = document.getElementById('ticket_cost')
+       if (ticket_class.value =='First_class') {
+        cost = 2;
+        bill.innerText ='Ticket Cost = ' + cost +" " +"FCFA";
+        ticket_cost.value = cost;
+        
+    
+   }
+   else if (ticket_class.value == "Middle_class") {
+    cost = 3;
+    ticket_cost.value = cost;
+      bill.innerText ='Ticket Cost = ' + cost +" " +"FCFA";
+    
+   } else {
+    cost = 5;
+      bill.innerText ='Ticket Cost = ' + cost +" " +"FCFA";
+    ticket_cost.value = cost;
+    
+   }
+    }
+   function check_number(event){
+    var phone_number = document.getElementById('phone_number');
+    phone_number_list = String(phone_number.value);
+    if (phone_number_list.length != 9) {
+          console.log(phone_number_list.length)
+        alert('phone number must be at least nine digits long')
+          event.preventDefault();
+
+    }
+  
+   }
+
+
+</script>
+{% endblock%}

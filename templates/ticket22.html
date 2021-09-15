@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Afcon camair</title>
+    <!-- MDB icon -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body >
+    <style type="text/css">
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .logo{
+        width:100%;
+        
+
+      }
+      .qr{
+        transform: translateX(-110px);
+      }
+      @media print 
+{
+   @page
+   {
+    size: 5.63 in 1.97in;
+    size: landscape;
+    margin: none;
+  }
+}
+
+    </style>
+
+   <div class="container-fluid" style="background: green;">
+     <div class="row text-white">
+       <div class="col-md-4 mt-3" style="position: relative;">
+         <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fpython_tip%2Fstatus%2F1108141347951665152&psig=AOvVaw3p57brVNbo-fPj4nlJ_bo_&ust=1631463293002000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLiD4MOo9_ICFQAAAAAdAAAAABAD " class="logo">
+       </div>
+       <div class="col-md-4  no-wrap text-center mt-5 pt-5">
+           <h5><span class="text-dark">Match <i class="fas fa-angle-double-right"></i></span> {{match.match_name}}</h5>
+           <h5><span class="text-dark"> Round <i class="fas fa-angle-double-right"></i></span>       {{match.match_round}}</h5>
+           <h5><span class="text-dark">Staduim  <i class="fas fa-angle-double-right"></i></span> {{match.match_staduim}}<br>{{match.match_staduim.staduim_town}}</h5>
+            <h5> <span class="text-dark">Date & Time <i class="fas fa-angle-double-right"></i></span> {{match.match_time}}</h5>
+
+       </div>
+       <div class="col-md-4  text-center mt-5 pt-5">
+
+         <h5><span class="text-dark">Name<i class="fas fa-angle-double-right"></i></span> {{customer_name}}</h5>
+           <h4>First class</h4>
+            <h4>123456789</h4>
+            <h4>670057606</h4>
+            
+         <div class="col-md-4 qr mb-4 mt-5">
+           <img src="{% static 'img/qr.jpeg' %}">
+         </div>
+       </div>
+       </div>
+     </div>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+    <!-- <script src="{% static 'js/main.js' %}"></script> -->
+  </body>
+</html>

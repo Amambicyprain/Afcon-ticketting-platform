@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load thumbnail %}
+<main>
+    <div class="container-fluid ">
+      <div class="row d-md-flex  justify-content-center">
+       
+          <h4 class="text-center m-4"> All Staduims </h4>
+      
+        {% for staduim in staduims %}
+         <div class="col-md-4 mt-3 mt-md-3 d-md-flex justify-content-center ">
+          <div class="card text-center " style="background-color:#ffffff;">
+            
+            <div class="card-header">
+                <h1 class="text-success">{{staduim.staduim_name}}</h1>
+               
+            </div>
+
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+               <a href=" {% url 'staduim_matches' staduim.id %}">
+              {% thumbnail staduim.Staduim_image "350x200" as im %}
+              <img src="{{ im.url }}">
+              {% endthumbnail %}
+             
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><h3></h3></h5>
+              <p class="card-text">
+               Click on the Staduim image  to view upcoming matches on this staduim
+                
+              </p>
+              
+            </div>
+            <div class="card-footer"><h4 class="text-success">{{staduim.staduim_town}}</h4></div>
+          </div>
+        </div>
+        {% endfor%}
+      </div>
+      <div class="pagination">
+        <span class="step-links">
+            {% if matches.has_previous %}
+            <a href="?page=1" class="text-success">&laquo; first</a>
+            <a href="?page={{ matches.previous_page_number }}" class="text-success">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ matches.number }} of {{ matches.paginator.num_pages }}.
+            </span>
+            {% if matches.has_next %}
+            <a href="?page={{ matches.next_page_number }}" class="text-success">next</a>
+            <a href="?page={{ matches.paginator.num_pages }}" class="text-success">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+      {% endblock%}
+      
